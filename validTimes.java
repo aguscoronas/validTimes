@@ -21,15 +21,15 @@ public class validTimes {
         scn.close();
     }
 
-    private static void encodeDigits(int[] items, Map<Integer, Integer> itemToNumOfAppearances){
-        itemToNumOfAppearances.clear();
-        for (int item : items)
-            itemToNumOfAppearances.put(item, itemToNumOfAppearances.getOrDefault(item, 0) + 1);
+    private static void encodeDigits(int[] digits, Map<Integer, Integer> digitToNumOfAppearances){
+        digitToNumOfAppearances.clear();
+        for (int digit : digits)
+            digitToNumOfAppearances.put(digit, digitToNumOfAppearances.getOrDefault(digit, 0) + 1);
     }
 
-    private static void encodeDigits(int h1, int h2, int m1, int m2, Map<Integer, Integer> itemToNumOfAppearances){
+    private static void encodeDigits(int h1, int h2, int m1, int m2, Map<Integer, Integer> digitToNumOfAppearances){
         int[] hhmm = {h1, h2, m1, m2};
-        encodeDigits(hhmm, itemToNumOfAppearances);
+        encodeDigits(hhmm, digitToNumOfAppearances);
     }
 
     private static int validTimesSolution(int[] inputDigits){
