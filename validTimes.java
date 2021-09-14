@@ -15,10 +15,10 @@ public class validTimes {
     }
 
     private static void scanUserInput(int[] toBeFilled) {
-        Scanner scn = new Scanner(System.in);
-        for(int i = 0; i < toBeFilled.length; i++)
-            toBeFilled[i] = scn.nextInt();
-        scn.close();
+        try(Scanner scn = new Scanner(System.in)){
+            for(int i = 0; i < toBeFilled.length; i++)
+                toBeFilled[i] = scn.nextInt();
+        }
     }
 
     private static void encodeDigits(int[] digits, Map<Integer, Integer> digitToNumOfAppearances){
@@ -38,13 +38,13 @@ public class validTimes {
         Map<Integer, Integer> solDigitsToQuantity = new HashMap<>();
         encodeDigits(inputDigits, digitsToQuantity);
         //generate all valid times using nested loops
-        for(int h1 = 1; h1 <= maxHour1; h1++){
-            for(int h2 = 1; h2 <= maxHour2withH1equals1; h2++){
+        for(int h1 = 0; h1 <= maxHour1; h1++){
+            for(int h2 = 0; h2 <= maxHour2withH1equals1; h2++){
                 if(h1 == 2 && h2 > maxHour2withH1equals2){
                     break;
                 }
-                for(int m1 = 1; m1 <= maxMinute1; m1++){
-                    for(int m2 = 1; m2 <= maxMinute2; m2++){
+                for(int m1 = 0; m1 <= maxMinute1; m1++){
+                    for(int m2 = 0; m2 <= maxMinute2; m2++){
                         encodeDigits(h1, h2, m1, m2, solDigitsToQuantity);
                         //check if current valid time is permutation of user input digits
                         if(digitsToQuantity.equals(solDigitsToQuantity))
