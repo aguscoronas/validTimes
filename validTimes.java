@@ -46,14 +46,18 @@ public class validTimes {
                 for(int m1 = 0; m1 <= maxMinute1; m1++){
                     for(int m2 = 0; m2 <= maxMinute2; m2++){
                         encodeDigits(h1, h2, m1, m2, solDigitsToQuantity);
-                        //check if current valid time is permutation of user input digits
-                        if(digitsToQuantity.equals(solDigitsToQuantity))
-                            res++;
+                        res = res + isPermutation(digitsToQuantity, solDigitsToQuantity);
                     }
                 }
             }
         }
         return res;
+    }
+
+    private static int isPermutation(Map<Integer, Integer> digitsToQuantity, Map<Integer, Integer> solDigitsToQuantity) {
+        if(digitsToQuantity.equals(solDigitsToQuantity))
+            return 1;
+        return 0;
     }
 }
 
